@@ -6,7 +6,7 @@ const Path = process.argv[3];
 
 
 const request = require('request');
-const fs = require('fs')
+const fs = require('fs');
 
 request(URL, (error, response, body) => {
   console.log('error:', error); // Print the error if one occurred
@@ -16,19 +16,19 @@ request(URL, (error, response, body) => {
 
   fs.writeFile(Path, body, err => {
     if (err) {
-      console.error(err)
-      return
+      console.error(err);
+      return;
     }
-  //file written successfully
+    //file written successfully
     fs.stat(Path, (err, stats) => {
       if (err) {
-          console.log(`File doesn't exist.`);
+        console.log(`File doesn't exist.`);
       } else {
-          // console.log(stats.size);
-          console.log(`Downloaded and saved ${stats.size} bytes to ${Path}`);
+        // console.log(stats.size);
+        console.log(`Downloaded and saved ${stats.size} bytes to ${Path}`);
       }
     });
-  })
+  });
 });
 
 
